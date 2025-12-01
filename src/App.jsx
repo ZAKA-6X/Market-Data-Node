@@ -92,6 +92,14 @@ function App() {
         },
         timeout: 5000,
       });
+
+      if (!data?.points || !Array.isArray(data.points)) {
+        setHistoryError('History not available yet.');
+        setPriceHistory([]);
+        setVolume24h(null);
+        return;
+      }
+
       const formatted = data.points.map((pt) => ({
         time: new Date(pt.t).toLocaleTimeString([], {
           hour: '2-digit',
@@ -99,9 +107,11 @@ function App() {
         }),
         price: pt.price,
       }));
+
       if (!formatted.length) {
         setHistoryError('History not available yet.');
       }
+
       setPriceHistory(formatted);
       setVolume24h(data.volume24h || null);
     } catch (err) {
