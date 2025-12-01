@@ -1,0 +1,21 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    color-scheme: dark;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply min-h-screen bg-slate-950 text-slate-100 antialiased;
+  }
+
+  select option,
+  select optgroup {
+    background-color: #0f172a;
+    color: #e2e8f0;
+  }
+}
