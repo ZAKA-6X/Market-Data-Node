@@ -17,7 +17,20 @@ const PAIRS = [
   { symbol: 'ASTER', currency: 'USD' },
 ];
 
-const API_BASE = import.meta.env.VITE_API_BASE || 'https://market-data-node.onrender.com';
+function resolveApiBase() {
+  // Prefer explicit env override; otherwise use same-origin in production, render fallback locally.
+  if (import.meta.env.VITE_API_BASE) return import.meta.env.VITE_API_BASE;
+
+  if (typeof window !== 'undefined') {
+    const { origin, hostname } = window.location;
+    const isLocal = hostname === 'localhost' || hostname === '127.0.0.1';
+    if (!isLocal) return origin;
+  }
+
+  return 'https://market-data-node.onrender.com';
+}
+
+const API_BASE = resolveApiBase();
 
 function formatCurrency(value, currency) {
   return new Intl.NumberFormat('en-US', {
