@@ -92,16 +92,17 @@ function App() {
         },
         timeout: 5000,
       });
-      const formatted = data.points.map((pt) => ({
+      const points = Array.isArray(data?.points) ? data.points : [];
+      if (!points.length) {
+        throw new Error('History payload missing data points');
+      }
+      const formatted = points.map((pt) => ({
         time: new Date(pt.t).toLocaleTimeString([], {
           hour: '2-digit',
           minute: '2-digit',
         }),
         price: pt.price,
       }));
-      if (!formatted.length) {
-        setHistoryError('History not available yet.');
-      }
       setPriceHistory(formatted);
       setVolume24h(data.volume24h || null);
     } catch (err) {
