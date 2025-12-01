@@ -39,7 +39,7 @@
     "vite": "npm:rolldown-vite@7.2.5"
   },
   "description": "This \"Micro-Portfolio\" (The Crypto Dashboard) is not just a homework assignment. It is your **Technical Passport**.",
-  "main": "eslint.config.js",
+  "main": "server.js",
   "keywords": [],
   "author": "",
   "license": "ISC"
