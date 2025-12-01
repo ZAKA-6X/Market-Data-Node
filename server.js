@@ -271,5 +271,5 @@ app.get(/.*/, (req, res) => {
 
 app.listen(PORT, () => {
   // eslint-disable-next-line no-console
-  console.log(`Secure proxy running on http://localhost:${PORT}`);
+  console.log(`Secure proxy running on https://market-data-node.onrender.com:${PORT}`);
 });

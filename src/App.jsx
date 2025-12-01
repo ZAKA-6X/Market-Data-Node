@@ -17,7 +17,7 @@ const PAIRS = [
   { symbol: 'ASTER', currency: 'USD' },
 ];
 
-const API_BASE = import.meta.env.VITE_API_BASE || 'http://localhost:5000';
+const API_BASE = import.meta.env.VITE_API_BASE || 'https://market-data-node.onrender.com';
 
 function formatCurrency(value, currency) {
   return new Intl.NumberFormat('en-US', {
